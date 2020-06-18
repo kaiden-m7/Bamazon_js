@@ -1,5 +1,6 @@
 let mysql = require("mysql2");
 let inquirer = require("inquirer");
+const { start } = require("repl");
 
 let connection = mysql.createConnection({
     host: "localhost",
@@ -15,3 +16,14 @@ connection.connect(function (error){
     displayProducts();
 });
 
+function displayProducts(){
+    connection.query("SELECT * FROM products", function (error, res);
+    console.log("--------------");
+    console.log("Welcome To Bamazon");
+    console.log("--------------");
+    for (let i = 0; i < res.length; i++){
+        console.log(res[i].item_id + "|" + res[i].product_name + "|" res[i].department_name + "|" + res[i].price + "|" + res[i].stock_quantity + "|");
+    };
+    start();
+    )};
+}
