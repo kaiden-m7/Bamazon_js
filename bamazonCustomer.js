@@ -7,7 +7,7 @@ let connection = mysql.createConnection({
     port: 3306,
     user: "root",
     password: "Chefkaiden09",
-    databse: "bamazonDB"
+    database: "bamazonDB"
 });
 
 connection.connect(function (error){
@@ -16,14 +16,16 @@ connection.connect(function (error){
     displayProducts();
 });
 
-function displayProducts(){
-    connection.query("SELECT * FROM products", function (error, res);
-    console.log("--------------");
-    console.log("Welcome To Bamazon");
-    console.log("--------------");
-    for (let i = 0; i < res.length; i++){
-        console.log(res[i].item_id + "|" + res[i].product_name + "|" res[i].department_name + "|" + res[i].price + "|" + res[i].stock_quantity + "|");
-    };
-    start();
-    )};
-}
+function displayProducts() {
+    connection.query("SELECT * FROM products", function (err, res) {
+        // console.log(res);
+        console.log("-----------------------");
+        console.log("Welcome To Bamazon");
+        console.log("-----------------------");
+        for (var i = 0; i < res.length; i++) {
+            console.log(res[i].item_id + " | " + res[i].product_name + " | " + res[i].department_name + " | " + res[i].price + " | " + res[i].stock_quantity + " | ");
+
+        };
+        start();
+    });
+};
