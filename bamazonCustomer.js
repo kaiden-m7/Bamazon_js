@@ -29,3 +29,18 @@ function displayProducts() {
         start();
     });
 };
+
+function start () {
+    inquirer.prompt([
+        {
+            name: "desiredItem",
+            type: "input",
+            message: "Please enter item ID of the item you are looking for: ",
+        },
+        {
+            name: "desiredQuantity",
+            type: "input",
+            message: "Enter the amount if items you would like to purchase: " 
+        }
+    ])
+}
