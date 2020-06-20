@@ -1,7 +1,7 @@
-let mysql = require("mysql2");
-let inquirer = require("inquirer");
+let mysql = require("mysql2"); //reference to database/npm package
+let inquirer = require("inquirer"); //npm package
 
-
+//variable that connects Mysql database to js file using root localhost
 let connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
@@ -10,11 +10,13 @@ let connection = mysql.createConnection({
     database: "bamazonDB"
 });
 
+//console logging if no connection to databse is made 
 connection.connect(function (err){
     if (err) throw err;
     console.log(connection.threadId);
     displayProducts();
 });
+
 
 function displayProducts() {
     connection.query("SELECT * FROM products", function (err, res) {
