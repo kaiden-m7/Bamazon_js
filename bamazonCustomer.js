@@ -44,7 +44,7 @@ function start() {
         {
             name: "desiredQuantity",
             type: "input",
-            message: "Enter the amount if items you would like to purchase: " 
+            message: "Enter the amount of items you would like to purchase: " 
         }
     ]).then(function (answer) { //reccords user answer 
         connection.query("SELECT * FROM products WHERE item_id = ?",[answer.desiredItem], function (err, res) {
