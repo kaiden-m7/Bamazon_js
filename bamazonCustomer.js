@@ -17,13 +17,14 @@ connection.connect(function (err){
     displayProducts();
 });
 
-
+//function used when user inputs 'node' js file name into the terminal 
 function displayProducts() {
     connection.query("SELECT * FROM products", function (err, res) {
-        // console.log(res);
+       
         console.log("-----------------------");
-        console.log("Welcome To Bamazon");
+        console.log("Welcome To Bamazon"); //text to begin the 'shopping' process 
         console.log("-----------------------");
+        //loops through results from database and consle logs them for user to choose by ID_name
         for (var i = 0; i < res.length; i++) {
             console.log(res[i].item_id + " | " + res[i].product_name + " | " + "Department: " + res[i].department_name + " | " + "Price: " + res[i].price + " | " + "Quantity in Stock: " + res[i].stock_quantity + " | ");
 
@@ -32,6 +33,7 @@ function displayProducts() {
     });
 };
 
+//function prompt following listed items from table in database 
 function start() {
     inquirer.prompt([
         {
