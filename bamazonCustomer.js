@@ -1,6 +1,6 @@
 let mysql = require("mysql2");
 let inquirer = require("inquirer");
-const { start } = require("repl");
+
 
 let connection = mysql.createConnection({
     host: "localhost",
@@ -10,8 +10,8 @@ let connection = mysql.createConnection({
     database: "bamazonDB"
 });
 
-connection.connect(function (error){
-    if (error) throw error;
+connection.connect(function (err){
+    if (err) throw err;
     console.log(connection.threadId);
     displayProducts();
 });
@@ -30,7 +30,7 @@ function displayProducts() {
     });
 };
 
-function start () {
+function start() {
     inquirer.prompt([
         {
             name: "desiredItem",
@@ -43,9 +43,9 @@ function start () {
             message: "Enter the amount if items you would like to purchase: " 
         }
     ]).then(function (answer) { 
-        connection.query("SELECT * FROM products WHERE item_id = ?",[answer.desiredItem], function (error, res) {
-            if (error) throw error;
-            for (let i=0, i<res.length; i++) {
+        connection.query("SELECT * FROM products WHERE item_id = ?",[answer.desiredItem], function (err, res) {
+            if (err) throw err;
+            for (let i = 0; i < res.length; i++) {
                 let quantitySelected = parseInt(answer.desiredQuantity);
                 let total = answer.desiredQuantity * res[i].price;
                 let product_name = res[i].product_name
@@ -63,8 +63,18 @@ function start () {
                 function updateStocks(target_item, stockUpdate) {
                     connection.query("UPDATE products SET ? WHERE ?",
                     [
-                        
-                    ])
+                        {
+                            stock_quantity: stockUpdate
+                        },
+                        {
+                            item_id: target_item
+                        }
+                    ], function (err, res){
+                        if (err) throw err;
+                        console.log("stock updated");
+                        connection.end();
+                        console.log("Thank you for your purchase. Your final total is: $ " + total + "(Note: this does include tax)")
+                    });
                 }
             }
 
