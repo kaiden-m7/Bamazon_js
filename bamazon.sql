@@ -15,31 +15,31 @@ CREATE TABLE products(
 SELECT * FROM products;
 
 INSERT INTO products(product_name, department_name, price, stock_quantity)
-VALUES ("stereo", "electronics", 249.99, 300);
+VALUES ("10 inch Chef Knife", "Kitchen", 99.99, 300);
 
 INSERT INTO products(product_name, department_name, price, stock_quantity)
-VALUES ("walkman", "electronics", 49.99, 150);
+VALUES ("12 inch Sauce Pan", "Kitchen", 49.99, 150);
 
 INSERT INTO products(product_name, department_name, price, stock_quantity)
-VALUES ("betamax", "electronics", 149.99, 200);
+VALUES ("Bamboo Cutting Board", "Kitchen", 29.98, 200);
 
 INSERT INTO products(product_name, department_name, price, stock_quantity)
-VALUES ("peacoat", "clothing", 300.00, 100);
+VALUES ("Chef Coat", "clothing", 45.00, 100);
 
 INSERT INTO products(product_name, department_name, price, stock_quantity)
-VALUES ("jeans", "clothing", 75.00, 150);
+VALUES ("Cozy Chef Pants", "clothing", 45.00, 150);
 
 INSERT INTO products(product_name, department_name, price, stock_quantity)
-VALUES ("shirt", "clothing", 30.00, 200);
+VALUES ("Top Vented Chef Hat", "clothing", 30.00, 45);
 
 INSERT INTO products(product_name, department_name, price, stock_quantity)
-VALUES ("smart_watch", "accessories", 150.00, 100);
+VALUES ("Pocket Thermometer", "accessories", 9.99, 400);
 
 INSERT INTO products(product_name, department_name, price, stock_quantity)
-VALUES ("scarf", "accessories", 25.00, 150);
+VALUES ("4 Pack Sharpie", "misc", 7.99, 150);
 
 INSERT INTO products(product_name, department_name, price, stock_quantity)
-VALUES ("socks", "accessories", 9.99, 200);
+VALUES ("Date Lables", "misc", 9.99, 200);
 
 INSERT INTO products(product_name, department_name, price, stock_quantity)
-VALUES ("facewash", "bath", 3.50, 500);
+VALUES ("10 Pack Bick Pens", "misc", 5.50, 500);
