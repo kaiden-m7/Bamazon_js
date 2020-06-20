@@ -37,6 +37,15 @@ Creating a connection with the root local host allows the user to access this ta
     - Tells the user what item they have chosen
     - Updates the database with remaining items in stock 
     - Informs ser stock is updated 
+
+## Demonstration Video 
+-------
+[Link to Youtube video]()
+
+## Author
+-------
+Kaiden Munsey <br>
+[Github Profile](https://github.com/kaiden-m7)
   
 
 
