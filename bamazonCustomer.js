@@ -49,21 +49,25 @@ function start() {
     ]).then(function (answer) { //reccords user answer 
         connection.query("SELECT * FROM products WHERE item_id = ?",[answer.desiredItem], function (err, res) {
             if (err) throw err;
+            //loops through user answers and checks price and available stock in database 
             for (let i = 0; i < res.length; i++) {
                 let quantitySelected = parseInt(answer.desiredQuantity);
                 let total = answer.desiredQuantity * res[i].price;
                 let product_name = res[i].product_name
                 let stockUpdate = res[i].stock_quantity - quantitySelected;
+                //if user orders more than listed inventory console will show insufficient
                 if (quantitySelected > res[i].stock_quantity) {
                     console.log("Insufficient quantity, Sorry!");
                     connection.end();
                 }
-                else {
+                else { //if user orders under quantity in stock message will display
                     console.log("Item Chosen: " + product_name);
+                    //will inform user of new inventory status 
                     updateStocks(answer.desiredItem, stockUpdate);
                     console.log("There are " + stockUpdate + " " + product_name + " left in stock");
                 }
                 
+                //will subract desiredQuantity from database 
                 function updateStocks(target_item, stockUpdate) {
                     connection.query("UPDATE products SET ? WHERE ?",
                     [
@@ -76,7 +80,8 @@ function start() {
                     ], function (err, res){
                         if (err) throw err;
                         console.log("Stock Updated");
-                        connection.end();
+                        connection.end();//close connection with database 
+                        //infrom user purchase has been made,what their total is, and new quantity available 
                         console.log("Thank you for your purchase! Your final total is: $ " + total + "(Note: This does include tax!)")
                     });
                 }
