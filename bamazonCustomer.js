@@ -35,7 +35,7 @@ function displayProducts() {
 
 //function prompt following listed items from table in database 
 function start() {
-    inquirer.prompt([
+    inquirer.prompt([ //prompts user to make a selection of which item they would like to purchase and how much
         {
             name: "desiredItem",
             type: "input",
@@ -46,7 +46,7 @@ function start() {
             type: "input",
             message: "Enter the amount if items you would like to purchase: " 
         }
-    ]).then(function (answer) { 
+    ]).then(function (answer) { //reccords user answer 
         connection.query("SELECT * FROM products WHERE item_id = ?",[answer.desiredItem], function (err, res) {
             if (err) throw err;
             for (let i = 0; i < res.length; i++) {
