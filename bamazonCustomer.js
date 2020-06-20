@@ -42,5 +42,32 @@ function start () {
             type: "input",
             message: "Enter the amount if items you would like to purchase: " 
         }
-    ])
-}
+    ]).then(function (answer) { 
+        connection.query("SELECT * FROM products WHERE item_id = ?",[answer.desiredItem], function (error, res) {
+            if (error) throw error;
+            for (let i=0, i<res.length; i++) {
+                let quantitySelected = parseInt(answer.desiredQuantity);
+                let total = answer.desiredQuantity * res[i].price;
+                let product_name = res[i].product_name
+                let stockUpdate = res[i].stock_quantity - quantitySelected;
+                if (quantitySelected > res[i].stock_quantity) {
+                    console.log("Insufficient quantity, Sorry");
+                    connection.end();
+                }
+                else {
+                    console.log("Item Chosen: " + product_name);
+                    updateStocks(answer.desiredItem, stockUpdate);
+                    console.log("There is " + stockUpdate + " " + product_name + "left in stock");
+                }
+                
+                function updateStocks(target_item, stockUpdate) {
+                    connection.query("UPDATE products SET ? WHERE ?",
+                    [
+                        
+                    ])
+                }
+            }
+
+        });
+    })
+};
