@@ -23,7 +23,7 @@ function displayProducts() {
         console.log("Welcome To Bamazon");
         console.log("-----------------------");
         for (var i = 0; i < res.length; i++) {
-            console.log(res[i].item_id + " | " + res[i].product_name + " | " + res[i].department_name + " | " + res[i].price + " | " + res[i].stock_quantity + " | ");
+            console.log(res[i].item_id + " | " + res[i].product_name + " | " + "Department: " + res[i].department_name + " | " + "Price: " + res[i].price + " | " + "Quantity in Stock: " + res[i].stock_quantity + " | ");
 
         };
         start();
@@ -51,13 +51,13 @@ function start() {
                 let product_name = res[i].product_name
                 let stockUpdate = res[i].stock_quantity - quantitySelected;
                 if (quantitySelected > res[i].stock_quantity) {
-                    console.log("Insufficient quantity, Sorry");
+                    console.log("Insufficient quantity, Sorry!");
                     connection.end();
                 }
                 else {
                     console.log("Item Chosen: " + product_name);
                     updateStocks(answer.desiredItem, stockUpdate);
-                    console.log("There is " + stockUpdate + " " + product_name + "left in stock");
+                    console.log("There are " + stockUpdate + " " + product_name + " left in stock");
                 }
                 
                 function updateStocks(target_item, stockUpdate) {
@@ -71,9 +71,9 @@ function start() {
                         }
                     ], function (err, res){
                         if (err) throw err;
-                        console.log("stock updated");
+                        console.log("Stock Updated");
                         connection.end();
-                        console.log("Thank you for your purchase. Your final total is: $ " + total + "(Note: this does include tax)")
+                        console.log("Thank you for your purchase! Your final total is: $ " + total + "(Note: This does include tax!)")
                     });
                 }
             }
