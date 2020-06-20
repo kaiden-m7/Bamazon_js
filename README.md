@@ -27,13 +27,13 @@
 Creating a connection with the root local host allows the user to access this table in the _*bamazon.js*_ node file. 
 
 **Prompts**
-   1. `Please enter item ID of the item you are looking for:`
+   1. `Please enter item ID of the item you are looking for:`<br>
     - Listed items 1-10 can be chosen
 
-   2. `Enter the amount if items you would like to purchase:`
+   2. `Enter the amount if items you would like to purchase:`<br>
     - Allows user to order the quantity they desire
 
-   3. `Thank you for your purchase. Your final total is: $`
+   3. `Thank you for your purchase. Your final total is: $`<br>
     - Tells the user what item they have chosen
     - Updates the database with remaining items in stock 
     - Informs ser stock is updated 
